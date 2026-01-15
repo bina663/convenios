@@ -28,6 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/run-migrations', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return "Migrations executadas com sucesso!";
+});
+
 
 
 Route::middleware('auth')->group(function () {
