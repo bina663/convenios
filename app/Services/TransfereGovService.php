@@ -91,4 +91,15 @@ class TransfereGovService
         ];
     }
 
+
+    public function metas()
+    {
+        return $this->get('/meta_especial');
+    }
+
+    public function planoTrabalho()
+    {
+        return $this->get('/plano_trabalho_especial');
+    }
+
 }

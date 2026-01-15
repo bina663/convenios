@@ -16,6 +16,12 @@ class IntegracaoController extends Controller
 
     public function store(Request $request)
     {
+        if (!$request->has('endpoints') || empty($request->endpoints)) {
+            return back()
+                ->withErrors(['endpoints' => 'Informe pelo menos 1 endpoint'])
+                ->withInput();
+        }
+
         $api = Integracao::create([
             'nome' => $request->nome,
             'base_url' => $request->base_url,
@@ -28,11 +34,11 @@ class IntegracaoController extends Controller
             IntegracaoEndpoint::create([
                 'integracao_id' => $api->id,
                 'nome' => $endpoint['nome'],
-                'endpoint' => $endpoint['endpoint'],
-                'metodo' => $endpoint['metodo'],
+                'path' => $endpoint['path'],
             ]);
         }
 
-        return redirect()->back()->with('success', 'Integração cadastrada!');
+        return redirect()->back()->with('success', 'Integração salva com sucesso!');
     }
+
 }

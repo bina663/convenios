@@ -10,7 +10,7 @@
     <p class="sub">Gerencie as conexões com os sistemas externos</p>
 
     <div class="cards-integracoes">
-
+        
         <!-- CARD 1 -->
         <div class="card int-card">
             <i class="fa-solid fa-cloud-arrow-down"></i>

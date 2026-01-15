@@ -8,6 +8,20 @@
 
     <h1>Configurar Integração</h1>
     <p class="sub">Cadastre APIs externas e seus endpoints</p>
+    @if ($errors->any())
+        <div style="
+            background: #fa2e2e;
+            border: 1px solid #ff4d4d;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #ffb3b3;
+        ">
+            @foreach ($errors->all() as $error)
+                <p style="margin: 0;">• {{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
 
     <form action="{{ route('integracoes.store') }}" method="POST">
         @csrf
@@ -36,7 +50,7 @@
 
         <br><br>
 
-        <button type="submit" class="btn blue">Salvar Integração</button>
+        <button disabled type="submit" class="btn blue">Salvar Integração</button>
 
     </form>
 

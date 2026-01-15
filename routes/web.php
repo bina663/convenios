@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransfereGov;
-use App\Http\Controllers\IntegracaoController;
+use App\Http\Controllers\Admin\IntegracaoController;
+use App\Http\Controllers\Admin\Financeiro;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,15 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/integracoes', [AdminController::class, 'integracoes'])->name('admin.integracoes');
     Route::get('/admin/restart-integration', [AdminController::class, 'integracoes'])->name('admin.transferegov.restart');
     Route::get('/admin/integracoes/config', [TransfereGov::class, 'configIntegracao'])->name('admin.transferegov.config');
+    Route::get('/admin/trabalho-projetos', [AdminController::class, 'trabalhoProjetos'])->name('admin.trabalho-projetos');
+    Route::get('/admin/financeiros', [Financeiro::class, 'index'])->name('admin.financeiros');
+    Route::get('/admin/propostas', [AdminController::class, 'propostas'])->name('admin.propostas');
+    Route::get('/admin/oportunidades', [AdminController::class, 'oportunidades'])->name('admin.oportunidades');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
+    Route::get('/admin/profile', [AuthController::class, 'profile'])->name('auth.profile');
 });
 
 use Illuminate\Support\Facades\Artisan;
-
-Route::get('/run-migrations', function () {
-    Artisan::call('migrate', ['--force' => true]);
-    return "Migrations executadas com sucesso!";
-});
 
 
 
@@ -44,5 +46,5 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/auth', [AuthController::class, "authUser"]);
 Route::get('/register', [AuthController::class, "register"]);
-Route::post('/register/true', [AuthController::class, "registerUser"]);
+Route::get('/register/true', [AuthController::class, "registerUser"]);
 

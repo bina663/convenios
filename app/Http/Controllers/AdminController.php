@@ -56,5 +56,54 @@ class AdminController extends Controller
             'status' => $status
         ]);
     }
+    public function trabalhoProjetos(TransfereGovService $api)
+    {
+        $projetos = $api->monitoramento();
+
+        $total = count($projetos);
+
+        $execucao = collect($projetos)->where('situacao_plano_acao', 'CIENTE')->count();
+
+        $pendentes = collect($projetos)->where('situacao_plano_acao', 'PENDENTE')->count();
+
+        $impedido = collect($projetos)->where('situacao_plano_acao', 'IMPEDIDO')->count();
+        // Se não existir campo de licitação, deixamos como 0 por enquanto
+        $licitacao = collect($projetos)->where('situacao_plano_acao', 'LICITACAO')->count();
+
+        return view('admin.trabalho_projetos', compact(
+            'projetos',
+            'total',
+            'execucao',
+            'impedido',
+            'licitacao',
+            'pendentes'
+        ));
+    }
+
+    public function financeiros()
+    {
+        return view('admin.financeiros');
+    }
+
+    public function propostas(TransfereGovService $api){
+        $programas   = collect($api->programas());
+
+        return view('admin.propostas', [
+            'convenios' => $programas,
+        ]);
+    }
+
+    public function oportunidades(TransfereGovService $api){
+        $oportunidades   = collect($api->programas());
+
+        return view('admin.oportunidades', [
+            'oportunidades' => $oportunidades,
+        ]);
+    }
+
+    public function settings(){
+        return view("admin.settings");
+    }
+    
 
 }

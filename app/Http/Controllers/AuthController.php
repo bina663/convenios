@@ -57,14 +57,19 @@ class AuthController extends Controller
 
     public function registerUser(Request $request){
         $user = new User;
-        $user->name = "Sabrina";
+        $user->name = "Admin";
+        $user->email = "admin@gmail.com";
         
         $user->cpf = "123456789";
-        $user->email = $request->email;
         
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make("123456");
         $user->save();
 
         return redirect("/admin/dashboard");
+    }
+
+
+    public function profile(){
+        return view("admin.profile");
     }
 }

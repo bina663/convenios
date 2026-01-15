@@ -37,29 +37,29 @@
                 <i class="fa-solid fa-cogs"></i><span>Integrações</span>
             </a>
 
-            <a href="projetos.html" class="sidebar-item">
+            <a href="{{ route('admin.trabalho-projetos') }}" class="sidebar-item">
                 <i class="fa-solid fa-briefcase"></i><span>Trabalho/Projetos</span>
             </a>
 
-            <a href="financeiro.html" class="sidebar-item">
+            <a href="{{ route('admin.financeiros') }}" class="sidebar-item">
                 <i class="fa-solid fa-money-bill-wave"></i><span>Financeiro</span>
             </a>
 
-            <a href="propostas.html" class="sidebar-item">
+            <a href="{{ route('admin.propostas') }}" class="sidebar-item">
                 <i class="fa-solid fa-file-lines"></i><span>Propostas</span>
             </a>
 
-            <a href="oportunidades.html" class="sidebar-item">
+            <a href="{{ route('admin.oportunidades') }}" class="sidebar-item">
                 <i class="fa-solid fa-lightbulb"></i><span>Oportunidades</span>
             </a>
 
         <div class="sidebar-section-title">Sistema</div>
 
-            <a href="perfil.html" class="sidebar-item">
+            <a href="{{ route('auth.profile') }}" class="sidebar-item">
                 <i class="fa-solid fa-user"></i><span>Perfil</span>
             </a>
 
-            <a href="admin.html" class="sidebar-item">
+            <a href="{{ route('admin.settings') }}" class="sidebar-item">
                 <i class="fa-solid fa-users-gear"></i><span>Administração</span>
             </a>
 
